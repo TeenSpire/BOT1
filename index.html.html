@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ayuda para proyectos </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        #chat-container {
+            width: 400px;
+            margin: 50px auto;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-log {
+            height: 300px;
+            overflow-y: scroll;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .bot-message {
+            text-align: left;
+        }
+
+        .message-content {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .user-message .message-content {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .bot-message .message-content {
+            background-color: #d6eaf8;
+            color: #333;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        #submit-btn {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d6eaf8;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Motor de busqueda para proyectos</h1>
+
+    <div id="chat-container">
+        <div id="chat-log"></div>
+        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="submit-btn">Enviar</button>
+    </div>
+
+    <script>
+        // Función para agregar un mensaje al chat log
+        function addMessageToLog(message, sender) {
+            var chatLog = document.getElementById("chat-log");
+            var messageElement = document.createElement("div");
+            messageElement.className = "message " + sender;
+            messageElement.innerHTML = '<div class="message-content">' + message + '</div>';
+            chatLog.appendChild(messageElement);
+        }
+
+        // Función para buscar en Google
+        AIzaSyB4KoxbzYeFE1twetCR5pXrLL3wXPDALRU {
+            // Aquí debes agregar tu código para enviar una solicitud a la API de Google y obtener los resultados de búsqueda
+
+            // Ejemplo de búsqueda aleatoria
+            var results = ["Resultado 1", "Resultado 2", "Resultado 3"];
+            return results;
+        }
+
+        // Función para manejar el envío del mensaje del usuario
+        function handleUserInput() {
+            var userInput = document.getElementById("user-input").value;
+            if (userInput !== "") {
+                addMessageToLog(userInput, "user");
+
+                // Buscar en Google
+                var searchResults = searchGoogle(userInput);
+                searchResults.forEach(function(result) {
+                    addMessageToLog(result, "bot");
+                });
+
+                // Limpiar el campo de entrada
+                document.getElementById("user-input").value = "";
+            }
+        }
+
+        // Manejar el envío del mensaje cuando se hace clic en el botón "Enviar"
+        document.getElementById("submit-btn").addEventListener("click", function() {
+            handleUserInput();
+        });
+
+        // Manejar el envío del mensaje cuando se presiona la tecla Enter
+        document.getElementById("user-input").addEventListener("keydown", function(event) {
+            if (event.keyCode === 13) {
+                handleUserInput();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
